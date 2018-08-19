@@ -3,16 +3,14 @@ services:
 
 
   cf:
-    container_name: ubuntu
-    image: ubuntu
-    stdin_open: true
-    tty: true
-    restart: always
+    container_name: oo_cf
+    build:
+      context: ./
+      dockerfile: ubuntuDF
     volumes: 
       - mysql_confd:/docker/mysql/conf.d
       - mysql_data:/docker/mysql/data
       - mysql_initdb:/docker/mysql/initdb
-
 
   onlyoffice-mysql-server:
     container_name: onlyoffice-mysql-server
@@ -33,6 +31,9 @@ services:
   onlyoffice-community-server:
     container_name: onlyoffice-community-server
     image: onlyoffice/communityserver:latest
+    depends_on:
+      - onlyoffice-mysql-server
+      - onlyoffice-document-server
     environment:
       - MYSQL_SERVER_ROOT_PASSWORD=my-secret-pw
       - MYSQL_SERVER_DB_NAME=onlyoffice
