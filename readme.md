@@ -1,3 +1,7 @@
+# some notes from official guide
+
+
+```sh
 mkdir -p "./app/onlyoffice/mysql/conf.d";
 mkdir -p "./app/onlyoffice/mysql/data";
 mkdir -p "./app/onlyoffice/mysql/initdb";
@@ -24,4 +28,4 @@ GRANT ALL PRIVILEGES ON * . * TO 'root'@'%' IDENTIFIED BY 'my-secret-pw';
 GRANT ALL PRIVILEGES ON * . * TO 'onlyoffice_user'@'%' IDENTIFIED BY 'onlyoffice_pass';
 GRANT ALL PRIVILEGES ON * . * TO 'mail_admin'@'%' IDENTIFIED BY 'Isadmin123';
 FLUSH PRIVILEGES;" > /docker/mysql/initdb/setup.sql
-
+```
